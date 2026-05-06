@@ -3,7 +3,7 @@ const cargando = document.getElementById("cargando");
 
 cargando.textContent = "Cargando platos típicos...";
 
-// 🔥 Relación EXACTA con tus archivos
+
 const imagenesPlatos = {
     "Bandeja Paisa": "img/bandeja paisa.webp",
     "Sancocho Antioqueño": "img/sancocho antioqueño.jpg",
@@ -38,7 +38,7 @@ fetch("https://api-colombia.com/api/v1/TypicalDish")
             const card = document.createElement("div");
             card.classList.add("card");
 
-            // 🔥 imagen correcta o fallback
+           
             const imagen = imagenesPlatos[plato.name] || "img/default.jpg";
 
             card.innerHTML = `

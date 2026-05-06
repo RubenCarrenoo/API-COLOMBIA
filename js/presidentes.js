@@ -3,7 +3,7 @@ const cargando = document.getElementById("cargando");
 
 cargando.textContent = "Cargando presidentes...";
 
-// 🔥 Imágenes específicas para los que fallan
+
 const imagenesExtra = {
     "Carlos Lleras Restrepo": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Carlos_Lleras_Restrepo.jpg",
     "Guillermo León Valencia": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Guillermo_Leon_Valencia.jpg",
@@ -23,7 +23,7 @@ fetch("https://api-colombia.com/api/v1/President")
             const card = document.createElement("div");
             card.classList.add("card");
 
-            // 🔥 prioridad: imagen extra → API → default
+            
             let imagen = imagenesExtra[presidente.name] || presidente.image || "img/default.jpg";
 
             card.innerHTML = `
@@ -33,7 +33,7 @@ fetch("https://api-colombia.com/api/v1/President")
                 <p><strong>Partido:</strong> ${presidente.politicalParty || "No disponible"}</p>
             `;
 
-            // 🔥 si igual falla, fallback final
+            
             const img = card.querySelector("img");
             img.onerror = function () {
                 this.src = "img/default.jpg";
