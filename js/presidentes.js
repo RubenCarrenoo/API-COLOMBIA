@@ -3,13 +3,6 @@ const cargando = document.getElementById("cargando");
 
 cargando.textContent = "Cargando presidentes...";
 
-
-const imagenesExtra = {
-    "Carlos Lleras Restrepo": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Carlos_Lleras_Restrepo.jpg",
-    "Guillermo León Valencia": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Guillermo_Leon_Valencia.jpg",
-    "José Vicente Concha": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Jose_Vicente_Concha.jpg"
-};
-
 fetch("https://api-colombia.com/api/v1/President")
     .then(res => res.json())
     .then(data => {
@@ -23,8 +16,19 @@ fetch("https://api-colombia.com/api/v1/President")
             const card = document.createElement("div");
             card.classList.add("card");
 
-            
-            let imagen = imagenesExtra[presidente.name] || presidente.image || "img/default.jpg";
+            let imagen = presidente.image;
+
+            if (presidente.name.includes("Carlos Lleras")) {
+                imagen = "../img/carloss.webp";
+            } else if (presidente.name.includes("Guillermo")) {
+                imagen = "../img/guillermo.jpg";
+            } else if (presidente.name.includes("Jose Vicente") || presidente.name.includes("José Vicente")) {
+                imagen = "../img/josevicente.jpg";
+            }
+
+            if (!imagen) {
+                imagen = "../img/default.jpg";
+            }
 
             card.innerHTML = `
                 <h3>${presidente.name}</h3>
@@ -33,10 +37,9 @@ fetch("https://api-colombia.com/api/v1/President")
                 <p><strong>Partido:</strong> ${presidente.politicalParty || "No disponible"}</p>
             `;
 
-            
             const img = card.querySelector("img");
             img.onerror = function () {
-                this.src = "img/default.jpg";
+                this.src = "../img/default.jpg";
             };
 
             contenedor.appendChild(card);
@@ -45,5 +48,5 @@ fetch("https://api-colombia.com/api/v1/President")
     })
     .catch(error => {
         console.error(error);
-        cargando.textContent = "❌ Error al cargar presidentes";
+        cargando.textContent = "Error al cargar presidentes";
     });
