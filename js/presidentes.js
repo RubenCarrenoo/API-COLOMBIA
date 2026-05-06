@@ -22,6 +22,7 @@ fetch("https://api-colombia.com/api/v1/President")
                 imagen = "../img/carloss.webp";
             } else if (presidente.name.includes("Guillermo")) {
                 imagen = "../img/guillermo.jpg";
+                
             } else if (presidente.name.includes("Jose Vicente") || presidente.name.includes("José Vicente")) {
                 imagen = "../img/josevicente.jpg";
             }
