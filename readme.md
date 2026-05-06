@@ -78,4 +78,15 @@ Nombre del estudiante: Ruben Carreno
 
 ## Capturas 
 
-Puedes agregar aquí imágenes del proyecto funcionando.
+
+
+![inicio](img/inicio.png)
+
+
+![presidentes](img/presidentes.png)
+
+
+![departamentos](img/departamentos.png)
+
+
+![comida](img/comida.png)
